@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class Road {
     private final int roadWidth = 40;
@@ -7,10 +7,12 @@ public class Road {
     private double roadLength;
     private double initialX1, initialY1, finishX1, finishY1;
     private String orientation;
-    private int[] touchingRoads = new int[]{0, 1, 2, 3, 4, 5};
+    public ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+    public ArrayList<TrafficLight> trafficLights = new ArrayList<TrafficLight>();
+    private int touchingRoads;
 
 
-    public Road(double roadLength, double initialX1, double initialY1, String orientation, int identifier, int[] touchingRoads) {
+    public Road(double roadLength, double initialX1, double initialY1, String orientation, int identifier, int touchingRoads) {
         this.roadLength = roadLength;
         this.initialX1 = initialX1;
         this.initialY1 = initialY1;
@@ -18,7 +20,6 @@ public class Road {
         this.identifier = identifier;
         this.touchingRoads = touchingRoads;
     }
-
     public void checkRoadEnd() {
         if (orientation.equals("Horizontal")) {
             setFinishX1(initialX1 + roadLength);
@@ -27,8 +28,21 @@ public class Road {
         }
     }
 
-    public int[] getTouchingRoads() {
+    public void addCar() {
+        vehicles.add(new Car(getInitialX1(), getInitialY1(), "East", getIdentifier()));
+    }
+
+    public void addTrafficLight() {
+        trafficLights.add(new TrafficLight((getRoadLength() + initialX1), getFinishY1()));
+    }
+
+    public int getTouchingRoads() {
         return touchingRoads;
+    }
+
+
+    public void setTouchingRoads(int touchingRoads) {
+
     }
 
     public String getOrientation() {
@@ -70,9 +84,5 @@ public class Road {
 
     public int getIdentifier() {
         return identifier;
-    }
-
-    public void setTouchingRoads(int[] touchingRoads) {
-        this.touchingRoads = touchingRoads;
     }
 }

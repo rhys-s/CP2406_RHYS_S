@@ -29,6 +29,10 @@ import java.util.ArrayList;
             }
         }
 
+        public void drive() {
+            setCurrentX(currentX + speed);
+        }
+
         public double getWidth() {
             return width;
         }
