@@ -28,19 +28,6 @@ import java.util.ArrayList;
                 setCurrentY(currentY - getLength());
             }
         }
-        /*
-        public void move() {
-            if (getDirection().equals("East")) {
-                setCurrentX(currentX + getSpeed());
-            } else if (getDirection().equals("West")) {
-                setCurrentX(currentX - getSpeed());
-            } else if (getDirection().equals("North")) {
-                setCurrentX(currentX + getSpeed());
-            } else if (getDirection().equals("South")) {
-                setCurrentX(currentX - getSpeed());
-            }
-        }
-*/
 
         public double getWidth() {
             return width;
