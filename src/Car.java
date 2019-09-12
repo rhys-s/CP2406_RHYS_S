@@ -3,8 +3,8 @@ public class Car extends Vehicle {
     public Car(double initialX, double initialY,String direction,int currentRoad) {
         super(initialX, initialY,direction,currentRoad);
         setSpeed(carSpeed);
-        setLength(getCarLength());
-        setWidth(getLength()*0.5);
+        setLength(getCarLength()); //setting length in parent class
+        setWidth(getLength()*0.5); // car width = half of length
     }
 
     public int getCarSpeed() {
