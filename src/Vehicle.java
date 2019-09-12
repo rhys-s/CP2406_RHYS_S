@@ -3,16 +3,20 @@ import java.util.ArrayList;
 
     public class Vehicle {
         final double carLength = 6.0;
+        private int currentRoad;
         private double length, initialX, initialY, width, speed, currentX, currentY;
         private String direction;
 
-        public Vehicle(double initialX, double initialY, String direction) {
+        //Default constructor
+        public Vehicle(double initialX, double initialY, String direction,int currentRoad) {
             this.initialY = initialY;
             this.initialX = initialX;
             this.direction = direction;
+            this.currentRoad = currentRoad;
 
         }
-
+        // This function changes the currentX value to be that of the front of the car depending on
+        // direction of travel
         public void initiateFrontOfVehicle() {
             if (getDirection().equals("East")) {
                 setCurrentX(currentX + getLength());
@@ -24,7 +28,7 @@ import java.util.ArrayList;
                 setCurrentX(currentX - getLength());
             }
         }
-
+        /*
         public void move() {
             if (getDirection().equals("East")) {
                 setCurrentX(currentX + getSpeed());
@@ -36,7 +40,7 @@ import java.util.ArrayList;
                 setCurrentX(currentX - getSpeed());
             }
         }
-
+*/
 
         public double getWidth() {
             return width;
@@ -95,4 +99,15 @@ import java.util.ArrayList;
             return initialY;
         }
 
+        public int getCurrentRoad() {
+            return currentRoad;
+        }
+
+        public void setCurrentRoad(int currentRoad) {
+            this.currentRoad = currentRoad;
+        }
+
+        public double getCarLength() {
+            return carLength;
+        }
     }
