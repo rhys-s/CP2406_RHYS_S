@@ -1,2 +1,98 @@
-public class Vehicle {
-}
+
+import java.util.ArrayList;
+
+    public class Vehicle {
+        final double carLength = 6.0;
+        private double length, initialX, initialY, width, speed, currentX, currentY;
+        private String direction;
+
+        public Vehicle(double initialX, double initialY, String direction) {
+            this.initialY = initialY;
+            this.initialX = initialX;
+            this.direction = direction;
+
+        }
+
+        public void initiateFrontOfVehicle() {
+            if (getDirection().equals("East")) {
+                setCurrentX(currentX + getLength());
+            } else if (getDirection().equals("West")) {
+                setCurrentX(currentX - getLength());
+            } else if (getDirection().equals("North")) {
+                setCurrentX(currentX + getLength());
+            } else if (getDirection().equals("South")) {
+                setCurrentX(currentX - getLength());
+            }
+        }
+
+        public void move() {
+            if (getDirection().equals("East")) {
+                setCurrentX(currentX + getSpeed());
+            } else if (getDirection().equals("West")) {
+                setCurrentX(currentX - getSpeed());
+            } else if (getDirection().equals("North")) {
+                setCurrentX(currentX + getSpeed());
+            } else if (getDirection().equals("South")) {
+                setCurrentX(currentX - getSpeed());
+            }
+        }
+
+
+        public double getWidth() {
+            return width;
+        }
+
+        public String getDirection() {
+            return direction;
+        }
+
+        public void setDirection(String direction) {
+            this.direction = direction;
+        }
+
+
+        public void setCurrentX(double currentX) {
+            this.currentX = currentX;
+        }
+
+        public void setCurrentY(double currentY) {
+            this.currentY = currentY;
+        }
+
+        public double getCurrentX() {
+            return currentX;
+        }
+
+        public double getCurrentY() {
+            return currentY;
+        }
+
+        public void setSpeed(double speed) {
+            this.speed = speed;
+        }
+
+        public void setWidth(double width) {
+            this.width = width;
+        }
+
+        public void setLength(double length) {
+            this.length = length;
+        }
+
+        public double getSpeed() {
+            return speed;
+        }
+
+        public double getLength() {
+            return length;
+        }
+
+        public double getInitialX() {
+            return initialX;
+        }
+
+        public double getInitialY() {
+            return initialY;
+        }
+
+    }
