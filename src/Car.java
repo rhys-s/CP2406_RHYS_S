@@ -7,10 +7,6 @@ public class Car extends Vehicle {
         setWidth(getLength()*0.5); // car width = half of length
     }
 
-    public int getCarSpeed() {
-        return carSpeed;
-    }
-
     public void setCarSpeed(int carSpeed) {
         this.carSpeed = carSpeed;
     }

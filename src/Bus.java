@@ -7,10 +7,6 @@ public class Bus extends Vehicle {
         setWidth(getLength()*0.5); // Bus width half of length
     }
 
-    public int getBusSpeed() {
-        return busSpeed;
-    }
-
     public void setBusSpeed(int busSpeed) {
         this.busSpeed = busSpeed;
     }

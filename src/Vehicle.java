@@ -15,7 +15,7 @@ import java.util.ArrayList;
             this.currentRoad = currentRoad;
 
         }
-        // This function changes the currentX value to be that of the front of the car depending on
+        // This function changes the currentX or currentY value to be that of the front of the car depending on
         // direction of travel
         public void initiateFrontOfVehicle() {
             if (getDirection().equals("East")) {
@@ -23,9 +23,9 @@ import java.util.ArrayList;
             } else if (getDirection().equals("West")) {
                 setCurrentX(currentX - getLength());
             } else if (getDirection().equals("North")) {
-                setCurrentX(currentX + getLength());
+                setCurrentY(currentY + getLength());
             } else if (getDirection().equals("South")) {
-                setCurrentX(currentX - getLength());
+                setCurrentY(currentY - getLength());
             }
         }
         /*

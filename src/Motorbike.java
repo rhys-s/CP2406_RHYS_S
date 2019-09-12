@@ -7,10 +7,6 @@ public class Motorbike extends Vehicle {
         setWidth(getLength() * 0.5); // Moto width half of length
     }
 
-    public int getMotorbikeSpeed() {
-        return motorbikeSpeed;
-    }
-
     public void setMotorbikeSpeed(int motorbikeSpeed) {
         this.motorbikeSpeed = motorbikeSpeed;
     }
