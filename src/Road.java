@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Road {
     private final int roadWidth = 40;
     private double carLength = 6;
@@ -10,6 +11,7 @@ public class Road {
     public ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
     public ArrayList<TrafficLight> trafficLights = new ArrayList<TrafficLight>();
     private int touchingRoads;
+    boolean collision;
 
 
     public Road(double roadLength, double initialX1, double initialY1, String orientation, int identifier, int touchingRoads) {
@@ -20,6 +22,7 @@ public class Road {
         this.identifier = identifier;
         this.touchingRoads = touchingRoads;
     }
+
     public void checkRoadEnd() {
         if (orientation.equals("Horizontal")) {
             setFinishX1(initialX1 + roadLength);
@@ -28,10 +31,39 @@ public class Road {
         }
     }
 
+    public boolean collisionDetection() {
+        collision = false;
+        for (int c = 0; c < vehicles.size(); c++) {
+            Vehicle v = vehicles.get(c);
+            for (int d = 1; d < vehicles.size(); d++) {
+                Vehicle a = vehicles.get(d);
+                System.out.println(a.getSpeed());
+                System.out.println(v.getSpeed());
+                if (c != d) {
+                    if (v.getCurrentX() + v.getSpeed() <= a.getCurrentX() + a.getSpeed() &&
+                            v.getCurrentX() + v.getSpeed() - v.getLength()
+                                    >= a.getCurrentX() + a.getSpeed() - a.getLength()) {
+                        collision = true;
+
+                    }
+
+                }
+
+
+            }
+        }
+        return collision;
+    }
+
+
+
     public void addCar() {
         vehicles.add(new Car(getInitialX1(), getInitialY1(), "East", getIdentifier()));
     }
 
+    public void addBus() {
+        vehicles.add(new Bus(50, getInitialY1(), "East", getIdentifier()));
+    }
     public void addTrafficLight() {
         trafficLights.add(new TrafficLight((getRoadLength() + initialX1), getFinishY1()));
     }
