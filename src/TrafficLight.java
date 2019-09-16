@@ -14,7 +14,7 @@ public class TrafficLight {
     public void operates() {
         Random random = new Random();
         randomValue = random.nextDouble();
-        if (randomValue <= 0.8) {
+        if (randomValue <= 0.3) {
             lightColour = "red";
         } else {
             lightColour = "green";

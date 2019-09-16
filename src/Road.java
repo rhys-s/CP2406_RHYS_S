@@ -10,6 +10,7 @@ public class Road {
     private String orientation;
     public ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
     public ArrayList<TrafficLight> trafficLights = new ArrayList<TrafficLight>();
+    public ArrayList<Road> roads = new ArrayList<Road>();
     private int touchingRoads;
     boolean collision;
 
@@ -32,10 +33,12 @@ public class Road {
     }
 
     public boolean collisionDetection() {
+
         collision = false;
+        /*
         for (int c = 0; c < vehicles.size(); c++) {
             Vehicle v = vehicles.get(c);
-            for (int d = 1; d < vehicles.size(); d++) {
+            for (int d = 0; d < vehicles.size(); d++) {
                 Vehicle a = vehicles.get(d);
                 System.out.println(a.getSpeed());
                 System.out.println(v.getSpeed());
@@ -44,15 +47,18 @@ public class Road {
                             v.getCurrentX() + v.getSpeed() - v.getLength()
                                     >= a.getCurrentX() + a.getSpeed() - a.getLength()) {
                         collision = true;
-
                     }
-
                 }
-
-
             }
         }
+
+         */
         return collision;
+    }
+
+    public void addRoad(double roadLength, double initialX1, double initialY1, String orientation, int identifier, int touchingRoads){
+        roads.add(new Road(roadLength,initialX1,initialY1,orientation,identifier,touchingRoads));
+
     }
 
 
@@ -62,8 +68,12 @@ public class Road {
     }
 
     public void addBus() {
-        vehicles.add(new Bus(50, getInitialY1(), "East", getIdentifier()));
+        vehicles.add(new Bus(getInitialX1(), getInitialY1(), "East", getIdentifier()));
     }
+    public void addMotorbike(){
+        vehicles.add(new Motorbike(getInitialX1(), getInitialY1(), "East", getIdentifier()));
+    }
+
     public void addTrafficLight() {
         trafficLights.add(new TrafficLight((getRoadLength() + initialX1), getFinishY1()));
     }
@@ -83,6 +93,10 @@ public class Road {
 
     public double getInitialX1() {
         return initialX1;
+    }
+
+    public void setIdentifier(int identifier) {
+        this.identifier = identifier;
     }
 
     public double getFinishX1() {
