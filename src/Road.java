@@ -39,10 +39,10 @@ public class Road {
             Vehicle v = vehicles.get(c);
             TrafficLight t = trafficLights.get(c);
             t.operates();
-            if (v.getCurrentX() < t.getX()){
-                    v.drive();
+            if (v.getCurrentX() < checkRoadEnd()){
+                v.drive();
                 System.out.println(v.getCurrentX());
-            }else if (v.getCurrentX() == t.getX() && t.lightColour.equals("green")){
+            }else if (v.getCurrentX() == checkRoadEnd() && t.lightColour.equals("green")){
                 v.setCurrentRoad(getTouchingRoads());
                 System.out.println(v.getCurrentX());
                 v.drive();

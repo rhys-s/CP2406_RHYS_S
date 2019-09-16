@@ -25,12 +25,9 @@ public class Main {
             for (int b = 0; b < main.roads.size(); b++) {
                 Road r = main.roads.get(b); //Gets road object from arraylist
                 r.driveVehicles();
-                if (b!= r.getIdentifier()){
-                    r =main.roads.get(r.getTouchingRoads());
-                    r.driveVehicles();
-                    else if (v.getCurrentX()getFinishX1()){
-                        v.drive();
-                        System.out.println(v.getCurrentX());
+                if (r.vehicles.get(0).getCurrentRoad() != r.getIdentifier()){
+                    r = main.roads.get(r.getTouchingRoads());
+                    r.addCar();
                 }
 
             }
