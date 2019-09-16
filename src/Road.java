@@ -10,7 +10,7 @@ public class Road {
     private String orientation;
     public ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
     public ArrayList<TrafficLight> trafficLights = new ArrayList<TrafficLight>();
-    public ArrayList<Road> roads = new ArrayList<Road>();
+
     private int touchingRoads;
     boolean collision;
 
@@ -24,11 +24,30 @@ public class Road {
         this.touchingRoads = touchingRoads;
     }
 
-    public void checkRoadEnd() {
+    public double checkRoadEnd() {
         if (orientation.equals("Horizontal")) {
-            setFinishX1(initialX1 + roadLength);
+            finishX1 = initialX1 + roadLength;
         } else if (orientation.equals("Vertical")) {
-            setFinishX1(initialX1 + roadLength);
+            finishX1 = initialX1 + roadLength;
+        }
+        return finishX1;
+    }
+
+    public void driveVehicles() {
+
+        for (int c = 0; c < vehicles.size(); c++) {
+            Vehicle v = vehicles.get(c);
+            TrafficLight t = trafficLights.get(c);
+            t.operates();
+            if (v.getCurrentX() < t.getX()){
+                    v.drive();
+                System.out.println(v.getCurrentX());
+            }else if (v.getCurrentX() == t.getX() && t.lightColour.equals("green")){
+                v.setCurrentRoad(getTouchingRoads());
+                System.out.println(v.getCurrentX());
+                v.drive();
+                System.out.println("You have changed onto road " + getTouchingRoads());
+            }
         }
     }
 
@@ -56,12 +75,6 @@ public class Road {
         return collision;
     }
 
-    public void addRoad(double roadLength, double initialX1, double initialY1, String orientation, int identifier, int touchingRoads){
-        roads.add(new Road(roadLength,initialX1,initialY1,orientation,identifier,touchingRoads));
-
-    }
-
-
 
     public void addCar() {
         vehicles.add(new Car(getInitialX1(), getInitialY1(), "East", getIdentifier()));
@@ -70,7 +83,8 @@ public class Road {
     public void addBus() {
         vehicles.add(new Bus(getInitialX1(), getInitialY1(), "East", getIdentifier()));
     }
-    public void addMotorbike(){
+
+    public void addMotorbike() {
         vehicles.add(new Motorbike(getInitialX1(), getInitialY1(), "East", getIdentifier()));
     }
 
