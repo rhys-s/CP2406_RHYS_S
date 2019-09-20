@@ -5,7 +5,7 @@ public class TrafficLight {
     String lightColour;
     private double rateOfChange = 0.3;
 
-    public TrafficLight(double x, double y) { //if
+    public TrafficLight(double x, double y) {
         lightColour = "green";
         this.x = x;
         this.y = y;
@@ -15,7 +15,7 @@ public class TrafficLight {
     public void operates() {
         Random random = new Random();
         randomValue = random.nextDouble();
-        if (randomValue <= 0.3) {
+        if (randomValue <= rateOfChange) {
             lightColour = "red";
         } else {
             lightColour = "green";
@@ -36,5 +36,9 @@ public class TrafficLight {
 
     public double getY() {
         return y;
+    }
+
+    public void setRateOfChange(double rateOfChange) {
+        this.rateOfChange = rateOfChange;
     }
 }

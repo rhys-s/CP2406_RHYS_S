@@ -84,9 +84,7 @@ public class Road {
 
 
     // // // // // // Following functions are getters and setters for previously mentioned variables// // // // // // //
-    public int getTouchingRoads() {
-        return touchingRoads;
-    }
+    public int getTouchingRoads() { return touchingRoads; }
 
     public void setInitialX1(double initialX1) { this.initialX1 = initialX1; }
 

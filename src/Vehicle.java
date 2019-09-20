@@ -33,53 +33,38 @@ import java.util.ArrayList;
         public void drive() {
             setCurrentX(currentX + speed);
         }
-        //All the following functions are getters and setters for previously listed variables
-        public double getWidth() {
-            return width;
-        }
+        // // // // // // Following functions are getters and setters for previously mentioned variables// // // // //
+        public double getWidth() { return width; }
 
-        public String getDirection() {
-            return direction;
-        }
+        public int getCurrentRoad() { return currentRoad; }
 
-        public void setDirection(String direction) {
-            this.direction = direction;
-        }
+        public String getDirection() { return direction; }
 
+        public void setDirection(String direction) { this.direction = direction; }
 
-        public void setCurrentX(double currentX) {
-            this.currentX = currentX;
-        }
+        public void setCurrentX(double currentX) { this.currentX = currentX; }
 
-        public void setCurrentY(double currentY) {
-            this.currentY = currentY;
-        }
+        public void setCurrentY(double currentY) { this.currentY = currentY; }
 
-        public double getCurrentX() {
-            return currentX;
-        }
+        public double getCurrentX() { return currentX; }
 
-        public double getCurrentY() {
-            return currentY;
-        }
+        public double getCurrentY() { return currentY; }
 
-        public void setSpeed(double speed) {
-            this.speed = speed;
-        }
+        public void setSpeed(double speed) { this.speed = speed; }
 
-        public void setWidth(double width) {
-            this.width = width;
-        }
+        public void setWidth(double width) { this.width = width; }
 
-        public void setLength(double length) {
-            this.length = length;
-        }
+        public void setLength(double length) { this.length = length; }
 
-        public double getLength() {
-            return length;
-        }
+        public double getLength() { return length; }
 
-        public double getCarLength() {
-            return carLength;
-        }
+        public double getCarLength() { return carLength; }
+
+        public double getSpeed() { return speed; }
+
+        public double getInitialX() { return initialX; }
+
+        public double getInitialY() { return initialY;}
+        // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
     }
+
