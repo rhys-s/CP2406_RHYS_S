@@ -16,23 +16,24 @@ import java.util.ArrayList;
 
         }
         // This function changes the currentX or currentY value to be that of the front of the car depending on
-        // direction of travel
+        // direction of travel, InitialX given in constructor is the back of the car, currentX front of the car
         public void initiateFrontOfVehicle() {
             if (getDirection().equals("East")) {
-                setCurrentX(currentX + getLength());
+                setCurrentX(initialX + getLength());
             } else if (getDirection().equals("West")) {
-                setCurrentX(currentX - getLength());
+                setCurrentX(initialX - getLength());
             } else if (getDirection().equals("North")) {
-                setCurrentY(currentY + getLength());
+                setCurrentY(initialY + getLength());
             } else if (getDirection().equals("South")) {
-                setCurrentY(currentY - getLength());
+                setCurrentY(initialY - getLength());
             }
         }
 
+        // Drive Function drives only in East direction,add further functionality depending on orientation
         public void drive() {
             setCurrentX(currentX + speed);
         }
-
+        //All the following functions are getters and setters for previously listed variables
         public double getWidth() {
             return width;
         }
@@ -74,28 +75,8 @@ import java.util.ArrayList;
             this.length = length;
         }
 
-        public double getSpeed() {
-            return speed;
-        }
-
         public double getLength() {
             return length;
-        }
-
-        public double getInitialX() {
-            return initialX;
-        }
-
-        public double getInitialY() {
-            return initialY;
-        }
-
-        public int getCurrentRoad() {
-            return currentRoad;
-        }
-
-        public void setCurrentRoad(int currentRoad) {
-            this.currentRoad = currentRoad;
         }
 
         public double getCarLength() {

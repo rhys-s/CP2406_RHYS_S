@@ -5,12 +5,13 @@ public class TrafficLight {
     String lightColour;
     private double rateOfChange = 0.3;
 
-    public TrafficLight(double x, double y) {
+    public TrafficLight(double x, double y) { //if
         lightColour = "green";
         this.x = x;
         this.y = y;
     }
 
+    //Operate function gets random double between 0.00 and 1 , if less than rateOfChange change the light colour
     public void operates() {
         Random random = new Random();
         randomValue = random.nextDouble();
@@ -20,7 +21,7 @@ public class TrafficLight {
             lightColour = "green";
         }
     }
-
+    //Following functions are getters and setters for the previously listed variables
     public String getLightColour() {
         return lightColour;
     }

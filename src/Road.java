@@ -4,17 +4,16 @@ import java.util.ArrayList;
 public class Road {
     private final int roadWidth = 40;
     private double carLength = 6;
-    private int identifier;
+    private int identifier; //current road object id
     private double roadLength;
     private double initialX1, initialY1, finishX1, finishY1;
     private String orientation;
     public ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
     public ArrayList<TrafficLight> trafficLights = new ArrayList<TrafficLight>();
-
     private int touchingRoads;
     boolean collision;
 
-
+    //Default constructor
     public Road(double roadLength, double initialX1, double initialY1, String orientation, int identifier, int touchingRoads) {
         this.roadLength = roadLength;
         this.initialX1 = initialX1;
@@ -23,34 +22,23 @@ public class Road {
         this.identifier = identifier;
         this.touchingRoads = touchingRoads;
     }
-
-    public double checkRoadEnd() {
+    //Changes finish X1 or finishY1 depending on orientation of road
+    public void checkRoadEnd() {
         if (orientation.equals("Horizontal")) {
-            finishX1 = initialX1 + roadLength;
+            setFinishX1(initialX1 + roadLength);
         } else if (orientation.equals("Vertical")) {
-            finishX1 = initialX1 + roadLength;
+            setFinishX1(initialX1 + roadLength);
         }
-        return finishX1;
     }
-
-    public void driveVehicles() {
-
-        for (int c = 0; c < vehicles.size(); c++) {
-            Vehicle v = vehicles.get(c);
-            TrafficLight t = trafficLights.get(c);
-            t.operates();
-            if (v.getCurrentX() < checkRoadEnd()){
-                v.drive();
-                System.out.println(v.getCurrentX());
-            }else if (v.getCurrentX() == checkRoadEnd() && t.lightColour.equals("green")){
-                v.setCurrentRoad(getTouchingRoads());
-                System.out.println(v.getCurrentX());
-                v.drive();
-                System.out.println("You have changed onto road " + getTouchingRoads());
-            }
+    //Goes through vehicles list and initialises the front of the vehicle
+    public void initiateVehiclesFrontPoint() {
+        for (int a = 0; a < vehicles.size(); a++) {
+            Vehicle v = vehicles.get(a);
+            v.initiateFrontOfVehicle(); //Puts marker at front of specific vehicle depending on direction
         }
     }
 
+/* // Edited out code that checked for collision
     public boolean collisionDetection() {
 
         collision = false;
@@ -71,11 +59,11 @@ public class Road {
             }
         }
 
-         */
+
         return collision;
     }
-
-
+*/
+    // // // // // // //Following functions add trafficlight and vehicles onto road // // // // // // // // // // // //
     public void addCar() {
         vehicles.add(new Car(getInitialX1(), getInitialY1(), "East", getIdentifier()));
     }
@@ -91,15 +79,20 @@ public class Road {
     public void addTrafficLight() {
         trafficLights.add(new TrafficLight((getRoadLength() + initialX1), getFinishY1()));
     }
+    // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
+
+
+    // // // // // // Following functions are getters and setters for previously mentioned variables// // // // // // //
     public int getTouchingRoads() {
         return touchingRoads;
     }
 
+    public void setInitialX1(double initialX1) { this.initialX1 = initialX1; }
 
-    public void setTouchingRoads(int touchingRoads) {
+    public void setInitialY1(double initialY1) { this.initialY1 = initialY1; }
 
-    }
+    public void setTouchingRoads(int touchingRoads) { this.touchingRoads = touchingRoads; }
 
     public String getOrientation() {
         return orientation;
@@ -141,8 +134,8 @@ public class Road {
         return roadWidth;
     }
 
-
     public int getIdentifier() {
         return identifier;
     }
+    // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 }
