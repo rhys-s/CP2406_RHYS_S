@@ -15,6 +15,9 @@ import java.util.ArrayList;
             this.currentRoad = currentRoad;
 
         }
+
+
+
         // This function changes the currentX or currentY value to be that of the front of the car depending on
         // direction of travel, InitialX given in constructor is the back of the car, currentX front of the car
         public void initiateFrontOfVehicle() {
